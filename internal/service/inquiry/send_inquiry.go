@@ -21,15 +21,15 @@ func (s *service) InquiryConfirmSubs(ctx context.Context, parm *InquiryConfirmSu
 	// defer the close function in order to return back the grpc connection into grpc connection pool
 	defer miClient.Close()
 
-	var grpcData mic.PaymentPoolId
-	grpcData = mic.PaymentPoolId{
+	var grpcData mic.PaymentPoolID
+	grpcData = mic.PaymentPoolID{
 		Paymentpoolid: parm.PaymentPoolId,
 	}
 
 	log.Println("Sending Data to gRPC Inquiry Confirm Subscribe ......")
 
 	// inquiryRequest := &mic.PaymentPoolId{grpcData.Paymentpoolid}
-	result, err := miClient.InquiryConfirmSubs(ctx, &grpcData)
+	result, err := miClient.InquiryAdviceConfirmSubs(ctx, &grpcData)
 	log.Println("connected ")
 	log.Println("a: ", result)
 	log.Println("b: ", err)
